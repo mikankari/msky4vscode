@@ -3,6 +3,8 @@
   "displayName": "Misskey for Visual Studio Code",
   "description": "Misskey client on Visual Studio Code editor",
   "version": "0.0.1",
+  "publisher": "mikankari",
+  "license": "MIT",
   "engines": {
     "vscode": "^1.85.0"
   },
@@ -12,30 +14,48 @@
   "activationEvents": [],
   "main": "./out/extension.js",
   "contributes": {
-    "commands": [
-      {
-        "command": "msky4vscode.helloWorld",
-        "title": "Hello World"
-      }
-    ]
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "msky4vscode",
+          "title": "Misskey",
+          "icon": "icon.png"
+        }
+      ]
+    },
+    "views": {
+      "msky4vscode": [
+        {
+          "type": "webview",
+          "id": "msky4vscode.view",
+          "name": "Misskey"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
-    "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
+    "compile": "node ./esbuild.mjs",
+    "watch": "node ./esbuild.mjs --watch",
     "pretest": "npm run compile && npm run lint",
     "lint": "eslint src --ext ts",
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/vscode": "^1.85.0",
+    "@types/ejs": "^3.1.5",
     "@types/mocha": "^10.0.6",
     "@types/node": "18.x",
+    "@types/vscode": "^1.85.0",
     "@typescript-eslint/eslint-plugin": "^6.15.0",
     "@typescript-eslint/parser": "^6.15.0",
-    "eslint": "^8.56.0",
-    "typescript": "^5.3.3",
     "@vscode/test-cli": "^0.0.4",
-    "@vscode/test-electron": "^2.3.8"
+    "@vscode/test-electron": "^2.3.8",
+    "esbuild": "^0.16.17",
+    "eslint": "^8.56.0",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@vscode/webview-ui-toolkit": "^1.4.0",
+    "ejs": "^3.1.9"
   }
 }
