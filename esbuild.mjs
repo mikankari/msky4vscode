@@ -32,7 +32,7 @@ const viewConfig = {
 	...baseConfig,
 	target: "es2020",
 	format: "esm",
-	entryPoints: ["./view/view.ts"],
+	entryPoints: ["./view/view.tsx"],
 	outfile: "./out/view.js",
 };
 
