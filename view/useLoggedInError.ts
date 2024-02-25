@@ -1,22 +1,22 @@
 import { useSyncExternalStore } from "react";
 import { EmittingEvents } from "../src/ViewProvider";
 
-export function useLoggedInAccount() {
+export function useLoggedInError() {
     return useSyncExternalStore(subscribe, getSnapshot);
 }
 
-let loggedInAccount: EmittingEvents['loggedin']['message'] | null | undefined;
+let loggedInError: EmittingEvents['loggedin-error']['message'] | undefined;
 
 type Event = MessageEvent<{ eventType: keyof EmittingEvents, message: unknown }>;
-type LoggedinEvent = MessageEvent<{ eventType: 'loggedin', message: EmittingEvents['loggedin']['message'] }>;
+type LoggedinErrorEvent = MessageEvent<{ eventType: 'loggedin-error', message: EmittingEvents['loggedin-error']['message'] }>;
 
 function subscribe(callback: () => void): () => void {
     const extentionMessageListener = (event: Event): void => {
-        if (((event: Event): event is LoggedinEvent => event.data.eventType === 'loggedin')(event)) {
-            loggedInAccount = event.data.message;
+        if (((event: Event): event is LoggedinErrorEvent => event.data.eventType === 'loggedin-error')(event)) {
+            loggedInError = event.data.message;
             callback();
-        } else if (event.data.eventType === 'loggedout') {
-            loggedInAccount = null;
+        } else if (event.data.eventType === 'loggedin') {
+            loggedInError = undefined;
             callback();
         }
     };
@@ -28,5 +28,5 @@ function subscribe(callback: () => void): () => void {
 }
 
 function getSnapshot() {
-    return loggedInAccount;
+    return loggedInError;
 }

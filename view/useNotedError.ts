@@ -1,22 +1,22 @@
 import { useSyncExternalStore } from "react";
 import { EmittingEvents } from "../src/ViewProvider";
 
-export function useLoggedInAccount() {
+export function useNotedError() {
     return useSyncExternalStore(subscribe, getSnapshot);
 }
 
-let loggedInAccount: EmittingEvents['loggedin']['message'] | null | undefined;
+let notedError: EmittingEvents['noted-error']['message'] | undefined;
 
 type Event = MessageEvent<{ eventType: keyof EmittingEvents, message: unknown }>;
-type LoggedinEvent = MessageEvent<{ eventType: 'loggedin', message: EmittingEvents['loggedin']['message'] }>;
+type NotedErrorEvent = MessageEvent<{ eventType: 'noted-error', message: EmittingEvents['noted-error']['message'] }>;
 
 function subscribe(callback: () => void): () => void {
     const extentionMessageListener = (event: Event): void => {
-        if (((event: Event): event is LoggedinEvent => event.data.eventType === 'loggedin')(event)) {
-            loggedInAccount = event.data.message;
+        if (((event: Event): event is NotedErrorEvent => event.data.eventType === 'noted-error')(event)) {
+            notedError = event.data.message;
             callback();
-        } else if (event.data.eventType === 'loggedout') {
-            loggedInAccount = null;
+        } else if (event.data.eventType === 'noted') {
+            notedError = undefined;
             callback();
         }
     };
@@ -28,5 +28,5 @@ function subscribe(callback: () => void): () => void {
 }
 
 function getSnapshot() {
-    return loggedInAccount;
+    return notedError;
 }
