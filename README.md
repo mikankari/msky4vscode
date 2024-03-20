@@ -1,71 +1,66 @@
-# msky4vscode README
+# Misskey for Visual Studio Code
 
-This is the README for your extension "msky4vscode". After writing up a brief description, we recommend including the following sections.
+Visual Studio Code エディタ上の Misskey クライアント
 
-## Features
+![パネルにホームタイムラインを表示したスクリーンショット](screenshots/panel-dark.png)
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+## 機能
 
-For example if there is an image subfolder under your extension project workspace:
+ノートの基本的な読み書きができます
 
-\!\[feature X\]\(images/feature-x.png\)
+- ホームタイムラインをリアルタイムに見る
+- CW (Content Warning) を表示・非表示
+- 添付ファイルを見る
+- センシティブな添付ファイルを表示・非表示
+    - 本家クライアントと異なり、ノートの添付ファイルへ一括して表示・非表示します
+- ノートを投稿する
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+表示場所はパネルのほか、タブ名 "MISSKEY" やアイコン "Mi" をドラッグすることで、プライマリまたはセカンダリサイドバーにも表示できます
 
-## Requirements
+![セカンダリサイドバーに表示したスクリーンショット](screenshots/sidebar-light.png)
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+### 未実装機能
 
-## Extension Settings
+代わりに、ノート右上の時刻から開く本家クライアント上で操作をお願いします
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+- ローカルタイムラインなどを見る
+- センシティブな添付ファイルを含むノートを非表示
+- カスタム絵文字の表示
+- MFM の表示
+- リアクションを見る
+- リアクションする
+- 投票する
+- ノートを投稿するときの設定
 
-For example:
+## インストール
 
-This extension contributes the following settings:
+Visual Studio Code 内の拡張機能マーケットプレースからインストールできます  
+「misskey」などで検索して、「Misskey for Visual Studio Code」をインストールします
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+## 必要なもの
 
-## Known Issues
+任意の Misskey サーバーのアカウントが必要です  
+misskey.io と nijimiss.moe のアカウントで動作確認済みです
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+ログイン時に Server と Access token を入力します
 
-## Release Notes
+![ログイン前のフォームを表示したスクリーンショット](screenshots/before-login.png)
 
-Users appreciate release notes as you update your extension.
+Server にアカウントが属する Misskey サーバーのドメイン名を入力します
 
-### 1.0.0
+Access token は本家クライアントの 設定 -> API から発行します  
+「アクセストークンの発行」のモーダルで次を入力します
 
-Initial release of ...
+<dl>
+<dt>名前</dt>
+<dd>Misskey for VSCode</dd>
+<dt>権限</dt>
+<dd>「アカウントの情報を見る」を有効にする</dd>
+<dd>「ノートを作成・削除する」を有効にする</dd>
+</dl>
 
-### 1.0.1
+「✔️」を押して発行されたアクセストークンを Access token に入力します
 
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
+「Log in」を押して、タイムラインを表示します
 
 **Enjoy!**

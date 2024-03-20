@@ -1,15 +1,31 @@
 {
   "name": "msky4vscode",
   "displayName": "Misskey for Visual Studio Code",
-  "description": "Misskey client on Visual Studio Code editor",
-  "version": "0.0.1",
+  "description": "Misskey client in Visual Studio Code editor",
+  "version": "1.0.0",
   "publisher": "mikankari",
+  "homepage": "https://github.com/mikankari/msky4vscode",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mikankari/msky4vscode.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mikankari/msky4vscode/issues"
+  },
+  "icon": "./icon.png",
   "license": "MIT",
   "engines": {
-    "vscode": "^1.85.0"
+    "vscode": "^1.76.0"
   },
   "categories": [
+    "Notebooks",
     "Other"
+  ],
+  "keywords": [
+    "Misskey",
+    "SNS",
+    "Social Network",
+    "Fediverse"
   ],
   "activationEvents": [],
   "main": "./out/extension.js",
@@ -47,7 +63,7 @@
     "@types/node": "18.x",
     "@types/react": "^18.2.46",
     "@types/react-dom": "^18.2.18",
-    "@types/vscode": "^1.85.0",
+    "@types/vscode": "^1.76.0",
     "@typescript-eslint/eslint-plugin": "^6.15.0",
     "@typescript-eslint/parser": "^6.15.0",
     "@vscode/test-cli": "^0.0.4",

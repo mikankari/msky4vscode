@@ -3,9 +3,14 @@
 src/**
 .gitignore
 .yarnrc
+.DS_Store
 vsc-extension-quickstart.md
 **/tsconfig.json
 **/.eslintrc.json
 **/*.map
 **/*.ts
+**/*.tsx
 **/.vscode-test.*
+node_modules
+esbuild.mjs
+*.vsix
